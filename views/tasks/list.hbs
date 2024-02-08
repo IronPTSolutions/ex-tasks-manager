@@ -1,0 +1,12 @@
+
+
+<ul class="list-group">
+  {{#each tasks as |task|}}
+    <li class="list-group-item d-flex">
+      <span class="me-auto">{{task.title}}</span>
+      <div class="">
+        <a href="/tasks/{{task.id}}/delete"><i class="fa fa-times text-danger"></i></a>
+      </div>
+    </li>
+  {{/each}}
+</ul>
