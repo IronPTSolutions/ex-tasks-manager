@@ -1,0 +1,12 @@
+
+
+<ul class="list-group">
+  {{#each issues as |issue|}}
+    <li class="list-group-item d-flex">
+      <span class="me-auto">{{issue.title}}</span>
+      <div class="">
+        <a href="/issues/{{issue.id}}/delete"><i class="fa fa-times text-danger"></i></a>
+      </div>
+    </li>
+  {{/each}}
+</ul>

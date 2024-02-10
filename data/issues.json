@@ -1,0 +1,4 @@
+[
+  { "title": "Database connection", "description": "Mongo db database connector with mongoose", "priority": "P1", "type": "task", "labels": ["database", "mongoose"] },
+  { "title": "Issues CRUD", "description": "Implement issues routes and controller (Create, Edit, List, Get)", "priority": "P1", "type": "task", "labels": ["issues", "controller", "routes"] }
+]
