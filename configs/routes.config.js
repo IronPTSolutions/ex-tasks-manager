@@ -3,6 +3,8 @@ const issues = require('../controllers/issues.controller');
 
 const router = express.Router();
 
+router.get('/create-issue', issues.create);
+router.post('/create-issue', issues.doCreate);
 router.get('/issues', issues.list);
 router.get('/issues/:id/delete', issues.delete);
 

@@ -1,0 +1,20 @@
+<form action="/create-issue" method="post" enctype="application/x-www-form-urlencoded">
+  
+  {{!-- TITLE --}}
+  <div class="input-group mb-1">
+    <span class="input-group-text"><i class="fa fa-tag fa-fw"></i></span>
+    <input type="text" name="title" value="{{issue.title}}" class="form-control {{#if errors.title }}is-invalid{{/if}}" placeholder="Issue title...">
+    {{#if errors.title }}<div class="invalid-feedback">{{errors.title}}</div>{{/if}}
+  </div>
+
+  {{!-- DESCRIPTION --}}
+  <div class="input-group mb-1">
+    <span class="input-group-text"><i class="fa fa-book fa-fw"></i></span>
+    <input type="text" name="description" value="{{issue.description}}" class="form-control {{#if errors.description }}is-invalid{{/if}}" placeholder="Issue description..."/ >
+    {{#if errors.description }}<div class="invalid-feedback">{{errors.description}}</div>{{/if}}
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-outline-primary">Create issue</button>
+  </div>
+</form>

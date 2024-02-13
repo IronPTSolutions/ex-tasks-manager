@@ -1,4 +1,5 @@
 const createError = require('http-errors');
+const mongoose = require('mongoose');
 const Issue = require('../models/issue.model');
 
 module.exports.list = (req, res, next) => {
@@ -19,3 +20,18 @@ module.exports.delete = (req, res, next) => {
     })
     .catch((error) => next(error));
 } 
+
+module.exports.create = (req, res, next) => res.render('issues/create');
+
+module.exports.doCreate = (req, res, next) => {
+  const issue = req.body;
+  Issue.create(issue)
+    .then((issue) => res.redirect('/issues'))
+    .catch((error) => {
+      if (error instanceof mongoose.Error.ValidationError) {
+        res.status(400).render('issues/create', { issue, errors: error.errors })
+      } else {
+        next(error);
+      }
+    });
+}

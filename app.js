@@ -13,6 +13,7 @@ app.set('view engine', 'hbs');
 app.set('views', `${__dirname}/views`);
 
 // Application middlewares
+app.use(express.urlencoded());
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   next();
