@@ -24,6 +24,7 @@ module.exports.delete = (req, res, next) => {
 module.exports.create = (req, res, next) => res.render('issues/create');
 
 module.exports.doCreate = (req, res, next) => {
+  console.log(req.body);
   const issue = req.body;
   Issue.create(issue)
     .then((issue) => res.redirect('/issues'))
@@ -34,4 +35,17 @@ module.exports.doCreate = (req, res, next) => {
         next(error);
       }
     });
+}
+
+module.exports.detail = (req, res, next) => {
+  const { id } = req.params;
+  Issue.findById(id)
+    .then((issue) => {
+      if (!issue) {
+        next(createError(404, 'Issue not found'));
+      } else {
+        res.render('issues/detail', { issue })
+      }
+    })
+    .catch((error) => next(error));
 }

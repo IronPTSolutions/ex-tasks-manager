@@ -8,13 +8,15 @@
   </div>
 
   {{!-- DESCRIPTION --}}
-  <div class="input-group mb-1">
-    <span class="input-group-text"><i class="fa fa-book fa-fw"></i></span>
-    <input type="text" name="description" value="{{issue.description}}" class="form-control {{#if errors.description }}is-invalid{{/if}}" placeholder="Issue description..."/ >
+  <div class="mb-1 {{#if errors.description }}is-invalid{{/if}}">
+    <textarea name="description" id="description-md" class="{{#if errors.description }}is-invalid{{/if}}"></textarea>
     {{#if errors.description }}<div class="invalid-feedback">{{errors.description}}</div>{{/if}}
   </div>
-
-  <div class="form-actions">
+  
+  <div class="form-actions mt-2">
     <button type="submit" class="btn btn-outline-primary">Create issue</button>
   </div>
 </form>
+
+{{!-- LOAD MD COMPONENT --}}
+<script>window.addEventListener('load', () => new SimpleMDE({ element: document.getElementById('description-md') });)</script>
