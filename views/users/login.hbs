@@ -1,3 +1,5 @@
+<h1 class="mb-3">Login</h1>
+
 <form method="POST" action="/login">
   <div class="form-group mb-2">
     <label>Email</label>
@@ -9,5 +11,8 @@
     <input name="password" type="password" class="form-control" />
   </div>
 
-  <button type="submit" class="btn btn-primary mt-5">Login</button>
+  <div class="d-flex mt-5">
+    <button type="submit" class="btn btn-primary me-2">Login</button>
+    <a class="btn btn-link" href="/signup">Signup</a>
+  </div>
 </form>
