@@ -1,11 +1,13 @@
-
+<h1>Welcome, {{user.email}}</h1>
 
 <ul class="list-group">
   {{#each issues as |issue|}}
     <li class="list-group-item d-flex">
       <a class="me-auto" href="/issues/{{issue.id}}">{{issue.title}}</a>
       <div class="">
-        <a href="/issues/{{issue.id}}/delete"><i class="fa fa-times text-danger"></i></a>
+        <a href="/issues/{{issue.id}}/delete"><i
+            class="fa fa-times text-danger"
+          ></i></a>
       </div>
     </li>
   {{/each}}
