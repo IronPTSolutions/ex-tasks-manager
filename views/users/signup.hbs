@@ -13,7 +13,7 @@
 <form method="POST" action="/signup">
   <div class="form-group mb-2">
     <label>Email</label>
-    <input name="email" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" />
+    <input name="email" type="email" value="{{user.email}}" class="form-control {{#if errors.email}}is-invalid{{/if}}" />
     <small class="invalid-feedback">{{errors.email}}</small>
   </div>
 
