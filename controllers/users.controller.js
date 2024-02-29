@@ -7,19 +7,18 @@ module.exports.create = (req, res, next) => {
 };
 
 module.exports.doCreate = (req, res, next) => {
-  const user = { email: req.body.email, password: req.body.password };
-
-  User.findOne({ email: user.email })
+  User.findOne({ email: req.body.email })
     .then((user) => {
       if (user) {
-        res.status(409).render('users/signup', { user, errors: { email: 'Already exists'} });
+        res.status(409).render('users/signup', { user: req.body, errors: { email: 'Already exists'} });
       } else {
+        const user = { email: req.body.email, password: req.body.password };
         return User.create(user)
           .then(() => res.redirect('/login'))
       }
     }).catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(400).render('users/signup', { user, errors: error.errors });
+        res.status(400).render('users/signup', { user: req.body, errors: error.errors });
       } else {
         next(error);
       }

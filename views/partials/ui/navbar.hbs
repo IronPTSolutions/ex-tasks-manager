@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
     <a class="navbar-brand" href="/">Task Manager</a>
-    <small>{{currentUser.email}}</small>
-
+    
     <button
       class="navbar-toggler"
       type="button"
@@ -18,19 +17,11 @@
     {{#if currentUser}}
       <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a
-              class="nav-link {{navActive currentPath '/issues'}}"
-              aria-current="page"
-              href="/issues"
-            >Issues</a></li>
+          <li class="nav-item"><a class="nav-link {{navActive currentPath '/issues'}}" aria-current="page" href="/issues">Issues</a></li>
+          <li class="nav-item"><a class="nav-link {{navActive currentPath '/create-issue'}}" aria-current="page" href="/create-issue"><i class="fa fa-plus"></i></a></li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item"><a
-              class="nav-link {{navActive currentPath '/create-issue'}}"
-              aria-current="page"
-              href="/create-issue"
-            ><i class="fa fa-plus"></i></a></li>
-
+          <li class="nav-item"><a class="nav-link {{navActive currentPath '/profile'}}" aria-current="page" href="/profile">{{currentUser.email}}</a></li>
           <li class="nav-item"><a class="nav-link" aria-current="page" href="/logout"><i class="fa fa-sign-out"></i></a></li>
         </ul>
       </div>

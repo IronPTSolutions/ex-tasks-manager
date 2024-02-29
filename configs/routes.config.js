@@ -1,6 +1,7 @@
 const express = require('express');
 const issues = require('../controllers/issues.controller');
 const users = require('../controllers/users.controller');
+const messages = require('../controllers/messages.controller');
 const secure = require('../middlewares/auth.middleware');
 
 const router = express.Router();
@@ -17,6 +18,8 @@ router.get('/issues/:id/edit', secure.isAuthenticated, issues.edit);
 router.post('/issues/:id/edit', secure.isAuthenticated, issues.doEdit);
 // Delete
 router.get('/issues/:id/delete', secure.isAuthenticated, issues.delete);
+
+router.post('/issues/:issueId/messages', secure.isAuthenticated, messages.doCreate);
 
 // User CRUD
 router.get('/login', users.login);

@@ -29,9 +29,21 @@ const issueSchema = new Schema(
       default: "task",
     },
     labels: [String],
+    owner: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User',
+      require: true
+    }
   },
   { timestamps: true }
 );
+
+issueSchema.virtual('messages', {
+  ref: 'Message',
+  localField: '_id',
+  foreignField: 'issue',
+  justOne: false
+})
 
 const Issue = mongoose.model("Issue", issueSchema);
 module.exports = Issue;
