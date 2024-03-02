@@ -1,19 +1,36 @@
-<h1 class="mb-3">Login</h1>
-
-<form method="POST" action="/login">
-  <div class="form-group mb-2">
-    <label>Email</label>
-    <input name="email" type="email" value="{{user.email}}" class="form-control" />
+<div class="row justify-content-center mb-3">
+  <div class="col-12 col-md-4 text-center">
+    <img src="/img/logo.png" class="logo" alt="Task Manager" />
   </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-12 col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title fw-light">Login</h5>
+        <form method="POST" action="/login">
 
-  <div class="form-group">
-    <label>Password</label>
-    <input name="password" type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" />
-    {{#if errors.password}}<div class="invalid-feedback">{{errors.password}}</div>{{/if}}
-  </div>
+          {{!-- EMAIL --}}
+          <div class="input-group mb-1">
+            <span class="input-group-text"><i class="fa fa-tag fa-fw"></i></span>
+            <input type="email" name="email" value="{{user.email}}" class="form-control {{#if errors.email }}is-invalid{{/if}}" placeholder="user@example.org">
+            {{#if errors.email }}<div class="invalid-feedback">{{errors.email}}</div>{{/if}}
+          </div>
 
-  <div class="d-flex mt-5">
-    <button type="submit" class="btn btn-primary me-2">Login</button>
-    <a class="btn btn-link" href="/signup">Signup</a>
+          {{!-- PASSWORD --}}
+          <div class="input-group mb-1">
+            <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
+            <input type="password" name="password" class="form-control {{#if errors.password }}is-invalid{{/if}}" placeholder="password">
+            {{#if errors.password }}<div class="invalid-feedback">{{errors.password}}</div>{{/if}}
+          </div>
+    
+          <div class="d-grid mt-2 gap-0">
+            <button type="submit" class="btn btn-primary btn-sm">Login</button>
+            <hr class="my-2">
+            <a class="btn btn-secondary btn-sm" href="/signup">Signup</a>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-</form>
+</div>

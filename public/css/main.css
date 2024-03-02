@@ -1,0 +1,21 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f9fafb;
+}
+
+.navbar {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 2px;
+}
+
+.logo {
+  width: 100%;
+  max-width: 120px;
+}
+
+.is-invalid .CodeMirror-wrap {
+  border-color: var(--bs-danger);
+}
+
+.list-group .status-badge {
+  width: 80px;
+}

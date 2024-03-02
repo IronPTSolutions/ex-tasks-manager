@@ -1,26 +1,2 @@
-{{#if errors}}
-    <div class="alert alert-danger">Error. Revise el formulario</div>
-{{/if}}
-
-<form action="/issues/{{issue.id}}/edit" method="post" enctype="application/x-www-form-urlencoded">
-  
-  {{!-- TITLE --}}
-  <div class="input-group mb-1">
-    <span class="input-group-text"><i class="fa fa-tag fa-fw"></i></span>
-    <input type="text" name="title" value="{{issue.title}}" class="form-control {{#if errors.title }}is-invalid{{/if}}" placeholder="Issue title...">
-    {{#if errors.title }}<div class="invalid-feedback">{{errors.title}}</div>{{/if}}
-  </div>
-
-  {{!-- DESCRIPTION --}}
-  <div class="mb-1 {{#if errors.description }}is-invalid{{/if}}">
-    <textarea name="description" id="description-md" class="{{#if errors.description }}is-invalid{{/if}}">{{issue.description}}</textarea>
-    {{#if errors.description }}<div class="invalid-feedback">{{errors.description}}</div>{{/if}}
-  </div>
-  
-  <div class="form-actions mt-2">
-    <button type="submit" class="btn btn-outline-primary">Edit Issue</button>
-  </div>
-</form>
-
-{{!-- LOAD MD COMPONENT --}}
-<script>window.addEventListener('load', () => new SimpleMDE({ element: document.getElementById('description-md') }))</script>
+{{>ui/section title="Edit issue"}}
+{{>issues/form path=(concat '/issues/' issue.id '/edit') action="Edit Issue"}}
