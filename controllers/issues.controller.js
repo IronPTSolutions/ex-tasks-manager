@@ -4,7 +4,14 @@ const Issue = require("../models/issue.model");
 const User = require("../models/user.model");
 
 module.exports.list = (req, res, next) => {
-  Issue.find()
+  const { title, type, priority } = req.query;
+  const criterial = {};
+  if (title) criterial.title = new RegExp(title, 'i');
+  if (type && type.toLowerCase() !== 'all') criterial.type = type;
+  if (priority && priority.toLowerCase() !== 'all') criterial.priority = priority;
+
+  Issue.find(criterial) 
+    .sort({ priority: 1 })
     .then((issues) => res.render("issues/list", { issues }))
     .catch((error) => next(error));
 };

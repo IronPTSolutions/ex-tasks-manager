@@ -18,6 +18,7 @@ app.set('view engine', 'hbs');
 app.set('views', `${__dirname}/views`);
 
 // Application middlewares
+app.use(express.static(`${__dirname}/public`))
 app.use(logger('dev'));
 app.use(express.urlencoded());
 // Session middlewares
@@ -27,6 +28,7 @@ app.use(loadUserSession);
 
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
+  res.locals.query = req.query;
   next();
 });
 

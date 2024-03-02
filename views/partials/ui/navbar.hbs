@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-secondary ">
   <div class="container">
-    <a class="navbar-brand" href="/">Task Manager</a>
+    <a class="navbar-brand" href="/">
+      <img src="/img/logo.png" alt="Task Manager" width="24" height="24" class="d-inline-block align-text-top">
+      Task Manager
+    </a>
     
     <button
       class="navbar-toggler"
@@ -14,17 +17,23 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    {{#if currentUser}}
-      <div class="collapse navbar-collapse" id="main-navbar">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {{#if currentUser}}
           <li class="nav-item"><a class="nav-link {{navActive currentPath '/issues'}}" aria-current="page" href="/issues">Issues</a></li>
           <li class="nav-item"><a class="nav-link {{navActive currentPath '/create-issue'}}" aria-current="page" href="/create-issue"><i class="fa fa-plus"></i></a></li>
-        </ul>
-        <ul class="navbar-nav mb-2 mb-lg-0">
+        {{/if}}
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        {{#if currentUser}}
           <li class="nav-item"><a class="nav-link {{navActive currentPath '/profile'}}" aria-current="page" href="/profile">{{currentUser.email}}</a></li>
           <li class="nav-item"><a class="nav-link" aria-current="page" href="/logout"><i class="fa fa-sign-out"></i></a></li>
-        </ul>
-      </div>
-    {{/if}}
+        {{else}}
+          <li class="nav-item"><a class="nav-link {{navActive currentPath '/login'}}" aria-current="page" href="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link {{navActive currentPath '/signup'}}" aria-current="page" href="/signup">Register</a></li>
+        {{/if}}
+      </ul>
+    </div>
   </div>
 </nav>

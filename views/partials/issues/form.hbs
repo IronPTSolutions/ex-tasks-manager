@@ -1,0 +1,67 @@
+<form action="{{path}}" method="post" enctype="application/x-www-form-urlencoded">
+
+  <div class="row g-1">
+    {{!-- TITLE --}}
+    <div class="col-12">
+      <div class="input-group">
+        <span class="input-group-text"><i class="fa fa-tag fa-fw"></i></span>
+        <input type="text" name="title" value="{{issue.title}}" class="form-control {{#if errors.title }}is-invalid{{/if}}"
+          placeholder="Issue title...">
+        {{#if errors.title }}<div class="invalid-feedback">{{errors.title}}</div>{{/if}}
+      </div>
+    </div>
+
+    {{!-- TYPE --}}
+    <div class="col-6 col-md-2">
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa fa-dot-circle-o fa-fw"></i></span>
+        <select class="form-select {{#if errors.priority }}is-invalid{{/if}}" name="type">
+          <option value="task" {{#ifEq issue.type 'task'}}selected{{/ifEq}}>task</option>
+          <option value="bug" {{#ifEq issue.type 'bug'}}selected{{/ifEq}}>bug</option>
+        </select>
+        {{#if errors.type }}<div class="invalid-feedback">{{errors.type}}</div>{{/if}}
+      </div>
+    </div>
+
+    {{!-- PRIORITY --}}
+    <div class="col-6 col-md-2">
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa fa-exclamation fa-fw"></i></span>
+        <select class="form-select {{#if errors.priority }}is-invalid{{/if}}" name="priority">
+          <option value="P1" {{#ifEq issue.priority 'P1'}}selected{{/ifEq}}>P1</option>
+          <option value="P2" {{#ifEq issue.priority 'P2'}}selected{{/ifEq}}>P2</option>
+          <option value="P3" {{#ifEq issue.priority 'P3'}}selected{{/ifEq}}>P3</option>
+          <option value="P4" {{#ifEq issue.priority 'P4'}}selected{{/ifEq}}>P4</option>
+        </select>
+        {{#if errors.priority }}<div class="invalid-feedback">{{errors.priority}}</div>{{/if}}
+      </div>
+    </div>
+
+    {{!-- STATUS --}}
+    <div class="col-6 col-md-2">
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa fa-hourglass-start fa-fw"></i></span>
+        <select class="form-select {{#if errors.status }}is-invalid{{/if}}" name="status">
+          <option value="open" {{#ifEq issue.status 'open'}}selected{{/ifEq}}>open</option>
+          <option value="in-progress" {{#ifEq issue.status 'in-progress'}}selected{{/ifEq}}>in-progress</option>
+          <option value="resolved" {{#ifEq issue.status 'resolved'}}selected{{/ifEq}}>resolved</option>
+        </select>
+        {{#if errors.status }}<div class="invalid-feedback">{{errors.status}}</div>{{/if}}
+      </div>
+    </div>
+
+  </div>
+
+  {{!-- DESCRIPTION --}}
+  <div class="mb-1 {{#if errors.description }}is-invalid{{/if}}">
+    <textarea name="description" id="description-md" class="{{#if errors.description }}is-invalid{{/if}}">{{issue.description}}</textarea>
+    {{#if errors.description }}<div class="invalid-feedback">{{errors.description}}</div>{{/if}}
+  </div>
+
+  <div class="d-grid mt-2">
+    <button type="submit" class="btn btn-outline-primary btn-sm text-uppercase fw-light">{{action}}</button>
+  </div>
+</form>
+
+{{!-- LOAD MD COMPONENT --}}
+<script>window.addEventListener('load', () => new SimpleMDE({ element: document.getElementById('description-md') }))</script>
